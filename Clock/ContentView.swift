@@ -160,37 +160,37 @@ struct ContentView: View {
     var body: some View {
         VStack {
             CircularProgressView(progress: .constant(circularProgressValue), lineWidth: 20)
-                .frame(width: 160, height: 160)
-                .padding(32)
-            
-            HStack(spacing: 0) {
-                Text(timer.formattedTime.hours)
-                    .frame(minWidth: 45, alignment: .trailing)
-                Text(":")
-                Text(timer.formattedTime.minutes)
-                    .frame(width: 45)
-                Text(":")
-                Text(timer.formattedTime.seconds)
-                    .frame(width: 45)
-                Text(":")
-                Text(timer.formattedTime.miliseconds)
-                    .frame(width: 45)
-            }
-            .font(.system(size: 32, weight: .semibold))
-            
+                .padding(.horizontal, 64)
+                .overlay {
+                    HStack(spacing: 0) {
+                        Text(timer.formattedTime.hours)
+                            .frame(minWidth: 45, alignment: .trailing)
+                        Text(":")
+                        Text(timer.formattedTime.minutes)
+                            .frame(width: 45)
+                        Text(":")
+                        Text(timer.formattedTime.seconds)
+                            .frame(width: 45)
+                        Text(":")
+                        Text(timer.formattedTime.miliseconds)
+                            .frame(width: 45)
+                    }
+                    .font(.system(size: 32, weight: .semibold))
+                }
             
             HStack(spacing: 30) {
                 startPauseButton()
                 
                 CircularControlButton(
-                    title: Text("Reset").font(.title),
+                    title: Text("Reset").font(.title2),
                     fill: LinearGradient(colors: [Color.cyan, .winterWhite], startPoint: .topLeading, endPoint: .bottomTrailing)
                 )
                 .onTapGesture {
                     timer.reset()
                 }
             }
-            .padding(32)
+            .padding(.horizontal, 64)
+            .padding(.top, 32)
         }
     }
     
@@ -218,7 +218,7 @@ struct ContentView: View {
         }
         
         return CircularControlButton(
-            title: Text(title).font(.title),
+            title: Text(title).font(.title2),
             fill: LinearGradient(colors: [Color.yellow, .winterWhite], startPoint: .topTrailing, endPoint: .leading)
         )
         .onTapGesture {
@@ -235,14 +235,15 @@ extension ContentView {
             ZStack {
                 Circle()
                     .stroke(style: SwiftUI.StrokeStyle(
-                        lineWidth: 2)
+                        lineWidth: 1)
                     )
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color.winterWhite.opacity(0.2))
                     .background(fill)
                     .overlay {
                         title
                     }
                     .clipShape(Circle())
+                    .shadow(color: Color.winterWhite, radius: 6)
             }
         }
     }
