@@ -153,12 +153,16 @@ class TimerObservedObject: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var timer: TimerObservedObject
+    private var circularProgressValue: CGFloat {
+        CGFloat(timer.currentTime.seconds) / 60 + (CGFloat(timer.currentTime.miliseconds) / 1000 / 60)
+    }
     
     var body: some View {
         VStack {
-            Image(systemName: "clock")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
+            CircularProgressView(progress: .constant(circularProgressValue), lineWidth: 20)
+                .frame(width: 160, height: 160)
+                .padding(32)
+            
             HStack(spacing: 0) {
                 Text(timer.formattedTime.hours)
                     .frame(minWidth: 45, alignment: .trailing)
