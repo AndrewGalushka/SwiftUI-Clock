@@ -11,7 +11,7 @@
 		2AC4048D289D919700646722 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4048C289D919700646722 /* ContentView.swift */; };
 		2AC4048F289D919900646722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AC4048E289D919900646722 /* Assets.xcassets */; };
 		2AC40492289D919900646722 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AC40491289D919900646722 /* Preview Assets.xcassets */; };
-		2AC4049C289DA97700646722 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4049B289DA97700646722 /* Colors.swift */; };
+		2AC4049C289DA97700646722 /* Color+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4049B289DA97700646722 /* Color+Extentions.swift */; };
 		2AC4049E289DB14E00646722 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4049D289DB14E00646722 /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +21,7 @@
 		2AC4048C289D919700646722 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2AC4048E289D919900646722 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AC40491289D919900646722 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2AC4049B289DA97700646722 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2AC4049B289DA97700646722 /* Color+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extentions.swift"; sourceTree = "<group>"; };
 		2AC4049D289DB14E00646722 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,7 +58,7 @@
 				2AC4048A289D919700646722 /* ClockApp.swift */,
 				2AC4048C289D919700646722 /* ContentView.swift */,
 				2AC4049D289DB14E00646722 /* CircularProgressView.swift */,
-				2AC4049B289DA97700646722 /* Colors.swift */,
+				2AC4049B289DA97700646722 /* Color+Extentions.swift */,
 				2AC4048E289D919900646722 /* Assets.xcassets */,
 				2AC40490289D919900646722 /* Preview Content */,
 			);
@@ -144,7 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AC4048D289D919700646722 /* ContentView.swift in Sources */,
-				2AC4049C289DA97700646722 /* Colors.swift in Sources */,
+				2AC4049C289DA97700646722 /* Color+Extentions.swift in Sources */,
 				2AC4049E289DB14E00646722 /* CircularProgressView.swift in Sources */,
 				2AC4048B289D919700646722 /* ClockApp.swift in Sources */,
 			);

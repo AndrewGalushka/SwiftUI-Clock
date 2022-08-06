@@ -9,6 +9,18 @@ import SwiftUI
 import Combine
 
 struct TimerTime: Equatable {
+    static var zero: TimerTime {
+        TimerTime(hours: 0, minutes: 0, seconds: 0, miliseconds: 0)
+    }
+    
+    init(hours: Int = 0, minutes: Int = 0, seconds: Int = 0, miliseconds: Int = 0) {
+        self.hours = hours
+        
+        self.minutes = minutes
+        self.seconds = seconds
+        self.miliseconds = miliseconds
+    }
+    
     var hours: Int = 0
     
     private var _minutes = 0
@@ -147,19 +159,17 @@ class TimerObservedObject: ObservableObject {
     }
     
     func reset() {
-        currentTime = .init()
+        currentTime = .zero
     }
 }
 
 struct ContentView: View {
     @EnvironmentObject var timer: TimerObservedObject
-    private var circularProgressValue: CGFloat {
-        CGFloat(timer.currentTime.seconds) / 60 + (CGFloat(timer.currentTime.miliseconds) / 1000 / 60)
-    }
+    @State private var circularProgressValue: CGFloat = 0
     
     var body: some View {
         VStack {
-            CircularProgressView(progress: .constant(circularProgressValue), lineWidth: 20)
+            CircularProgressView(progress: .constant(circularProgressValue), lineWidth: 32)
                 .padding(.horizontal, 64)
                 .overlay {
                     HStack(spacing: 0) {
@@ -177,13 +187,18 @@ struct ContentView: View {
                     }
                     .font(.system(size: 32, weight: .semibold))
                 }
+                .onChange(of: timer.currentTime) { newValue in
+                    withAnimation {
+                        circularProgressValue = (CGFloat(timer.currentTime.seconds) / 60) + (CGFloat(timer.currentTime.miliseconds) / 1000 / 60)
+                    }
+                }
             
             HStack(spacing: 30) {
                 startPauseButton()
                 
                 CircularControlButton(
                     title: Text("Reset").font(.title2),
-                    fill: LinearGradient(colors: [Color.cyan, .winterWhite], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    fill: LinearGradient(colors: [Color.red.opacity(0.2), .winterWhite], startPoint: .topLeading, endPoint: .bottomTrailing)
                 )
                 .onTapGesture {
                     timer.reset()
@@ -219,7 +234,7 @@ struct ContentView: View {
         
         return CircularControlButton(
             title: Text(title).font(.title2),
-            fill: LinearGradient(colors: [Color.yellow, .winterWhite], startPoint: .topTrailing, endPoint: .leading)
+            fill: LinearGradient(colors: [Color.black.opacity(0.1), .winterWhite], startPoint: .topLeading, endPoint: .bottomTrailing)
         )
         .onTapGesture {
             action()
