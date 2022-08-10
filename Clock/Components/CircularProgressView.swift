@@ -19,7 +19,7 @@ struct CircularProgressView: View {
         var colors: [Color] {
             switch self {
             case .classic:
-                return [.blue, .red, .mint, .blue]
+                return [.blue, .red, .blue]
             case .custom(let colors):
                 return colors
             }

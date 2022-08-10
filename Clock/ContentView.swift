@@ -8,70 +8,6 @@
 import SwiftUI
 import Combine
 
-struct TimerTime: Equatable {
-    static var zero: TimerTime {
-        TimerTime(hours: 0, minutes: 0, seconds: 0, miliseconds: 0)
-    }
-    
-    init(hours: Int = 0, minutes: Int = 0, seconds: Int = 0, miliseconds: Int = 0) {
-        self.hours = hours
-        
-        self.minutes = minutes
-        self.seconds = seconds
-        self.miliseconds = miliseconds
-    }
-    
-    var hours: Int = 0
-    
-    private var _minutes = 0
-    var minutes: Int {
-        set {
-            if newValue >= 60 {
-                hours = newValue / 60
-                _minutes = newValue % 60
-            } else {
-                _minutes = newValue
-            }
-        }
-        
-        get {
-            return _minutes
-        }
-    }
-    
-    private var _seconds = 0
-    var seconds: Int {
-        set {
-            if newValue >= 60 {
-                minutes += newValue / 60
-                _seconds = newValue % 60
-            } else {
-                _seconds = newValue
-            }
-        }
-        
-        get {
-            return _seconds
-        }
-    }
-    
-    private var _miliseconds = 0
-    var miliseconds: Int {
-        set {
-            if newValue >= 1000 {
-                seconds += newValue / 1000
-                _miliseconds = newValue % 1000
-            } else {
-                _miliseconds = newValue
-            }
-        }
-        
-        get {
-            return _miliseconds
-        }
-    }
-}
-
 class TimerObservedObject: ObservableObject {
     private var token: AnyCancellable?
     private lazy var timerPublisher = Timer.publish(
@@ -164,7 +100,7 @@ class TimerObservedObject: ObservableObject {
 }
 
 struct ContentView: View {
-    @EnvironmentObject var timer: TimerObservedObject
+    @StateObject var timer = TimerObservedObject()
     @State private var circularProgressValue: CGFloat = 0
     
     var body: some View {
@@ -174,18 +110,14 @@ struct ContentView: View {
                 .overlay {
                     HStack(spacing: 0) {
                         Text(timer.formattedTime.hours)
-                            .frame(minWidth: 45, alignment: .trailing)
                         Text(":")
                         Text(timer.formattedTime.minutes)
-                            .frame(width: 45)
                         Text(":")
                         Text(timer.formattedTime.seconds)
-                            .frame(width: 45)
                         Text(":")
                         Text(timer.formattedTime.miliseconds)
-                            .frame(width: 45)
                     }
-                    .font(.system(size: 32, weight: .semibold))
+                    .font(.system(size: 32, weight: .semibold).monospacedDigit())
                 }
                 .onChange(of: timer.currentTime) { newValue in
                     withAnimation {
@@ -197,7 +129,7 @@ struct ContentView: View {
                 startPauseButton()
                 
                 CircularControlButton(
-                    title: Text("Reset").font(.title2),
+                    title: "Reset",
                     fill: LinearGradient(colors: [Color.red.opacity(0.2), .winterWhite], startPoint: .topLeading, endPoint: .bottomTrailing)
                 )
                 .onTapGesture {
@@ -233,7 +165,7 @@ struct ContentView: View {
         }
         
         return CircularControlButton(
-            title: Text(title).font(.title2),
+            title: title,
             fill: LinearGradient(colors: [Color.black.opacity(0.1), .winterWhite], startPoint: .topLeading, endPoint: .bottomTrailing)
         )
         .onTapGesture {
@@ -244,7 +176,7 @@ struct ContentView: View {
 
 extension ContentView {
     struct CircularControlButton<Background: View>: View {
-        let title: Text
+        let title: String
         let fill: Background
         var body: some View {
             ZStack {
@@ -255,7 +187,7 @@ extension ContentView {
                     .foregroundColor(Color.winterWhite.opacity(0.2))
                     .background(fill)
                     .overlay {
-                        title
+                        Text(title).font(.system(size: 24, weight: .medium))
                     }
                     .clipShape(Circle())
                     .shadow(color: Color.winterWhite, radius: 6)
