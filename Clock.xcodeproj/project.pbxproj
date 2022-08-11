@@ -14,6 +14,7 @@
 		2AC4049C289DA97700646722 /* Color+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4049B289DA97700646722 /* Color+Extentions.swift */; };
 		2AC4049E289DB14E00646722 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4049D289DB14E00646722 /* CircularProgressView.swift */; };
 		2AC404A028A177B700646722 /* TimerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4049F28A177B700646722 /* TimerTime.swift */; };
+		D1BBF30A28A4F6CC0010A53E /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBF30928A4F6CC0010A53E /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		2AC4049B289DA97700646722 /* Color+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extentions.swift"; sourceTree = "<group>"; };
 		2AC4049D289DB14E00646722 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		2AC4049F28A177B700646722 /* TimerTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTime.swift; sourceTree = "<group>"; };
+		D1BBF30928A4F6CC0010A53E /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,10 @@
 			isa = PBXGroup;
 			children = (
 				2AC4048A289D919700646722 /* ClockApp.swift */,
-				2AC4048C289D919700646722 /* ContentView.swift */,
-				2AC4049F28A177B700646722 /* TimerTime.swift */,
+				D11A8B1928A4FB1200C59673 /* Logic */,
+				D11A8B1828A4FB0400C59673 /* Views */,
 				2AC404A228A1782F00646722 /* Components */,
-				2AC4049B289DA97700646722 /* Color+Extentions.swift */,
+				D11A8B1728A4FAF200C59673 /* Extentions */,
 				2AC4048E289D919900646722 /* Assets.xcassets */,
 				2AC40490289D919900646722 /* Preview Content */,
 			);
@@ -82,6 +84,31 @@
 				2AC4049D289DB14E00646722 /* CircularProgressView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D11A8B1728A4FAF200C59673 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				2AC4049B289DA97700646722 /* Color+Extentions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		D11A8B1828A4FB0400C59673 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2AC4048C289D919700646722 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D11A8B1928A4FB1200C59673 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				D1BBF30928A4F6CC0010A53E /* Timer.swift */,
+				2AC4049F28A177B700646722 /* TimerTime.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +185,7 @@
 				2AC4049C289DA97700646722 /* Color+Extentions.swift in Sources */,
 				2AC4049E289DB14E00646722 /* CircularProgressView.swift in Sources */,
 				2AC404A028A177B700646722 /* TimerTime.swift in Sources */,
+				D1BBF30A28A4F6CC0010A53E /* Timer.swift in Sources */,
 				2AC4048B289D919700646722 /* ClockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
